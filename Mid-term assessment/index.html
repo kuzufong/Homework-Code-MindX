@@ -137,6 +137,8 @@
             justify-content: flex-start;
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
 
         }
         .hero-dashboard-option {
@@ -248,30 +250,56 @@
             position: absolute;
             width: 120px;
             height: 110px;
-            bottom: 100px;          
-            right: 40px;
+            bottom: -30px;          
+            right: 150px;
         }
-        /* .background-rectangle {
+         .background-shapes {
             position: absolute;
-            z-index: 0;
+            top: 150px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
-        .bgrect {
-            width: 1200px;
-            height: 900px;
+
+        .shape1 {
             position: absolute;
+            top: 5%;
+            left: 43%;
+            background-color:rgba(19, 14, 255, 0.1);
+            z-index: -1;
+            width: 150.99999852307744px;
+            height: 716.9999929870631px;
+            transform: translateX(-50%) rotate(-37.09deg);
         }
-        .bgrect1 {
-            z-index: 1;
+        .shape2 {
+            position: absolute;
+            top: -15%;
+            left: 46.4%;
+            background-color:rgba(19, 14, 255, 0.1);
+            z-index: -1;
+            width: 150.99999976306853px;
+            height: 988.1679061643266px;
+            transform: translateX(-50%) rotate(39.34deg);
         }
-            .bgrect2 {
-            z-index: 2;
-        }   
-            .bgrect3 {
-            z-index: 3;
-        } */
+        .shape3 {
+            position: absolute;
+            top: 2%;
+            left: 60.7%;
+            background-color:rgba(19, 14, 255, 0.1);
+            z-index: -1;
+            width: 150.99999654095944px;
+            height: 716.9999835752842px;
+            transform: translateX(-50%) rotate(52.37deg);
+        }
     </style>
 </head>
 <body>
+    <div class="background-shapes">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+        <div class="shape3"></div>
+    </div>
     <header class="header">
         <div class="logo">Chief LA</div>
         <div class="nav-menu">
@@ -322,8 +350,8 @@
             </div>
             <div class="hero-dashboard-content">
                 <div class="hero-dashboard-content-main">
-                    <p style="color: white; font-size: 36px; margin-top: 0;">REQUEST LOAN</p>
-                    <p style="color: white; font-size: 36px; margin-top: 0; width:319px;">CHOOSE A REPAYMENT PLAN</p>
+                    <p style="color: white; font-size: 36px; margin-top: 10;">REQUEST LOAN</p>
+                    <p style="color: white; font-size: 36px; margin-top: 10; width:319px;">CHOOSE A REPAYMENT PLAN</p>
                     <div class="hero-dashboard-content-update">
                         <span style="font-size: 24px;">Latest Update</span>
                         <p style="font-size: 14px; margin-top: 10px; text-align: left; font-weight: 400;">Lorem ipsum dolor sit amet consectetur. Iaculis diam pretium sem porttitor nibh.</p>
@@ -338,12 +366,6 @@
             </div> 
         </div>   
         <div class="floating-chat-box"></div> 
-        <!-- <div class="background-rectangle">
-            <img src="Rectangle 15.png" alt="" class="bgrect bgrect1">
-            <img src="Rectangle 16.png" alt="" class="bgrect bgrect2">
-            <img src="Rectangle 19.png" alt="" class="bgrect bgrect3">
-
-        </div> -->
     </main>
 </body>
 </html>
