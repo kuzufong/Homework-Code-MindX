@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .titleH1 {
+        color: red;
+        background-color: lightgray;
+        }
+  </style>
+</head>
+<body>
+    <h1 class="titleH1">This is content</h1>
+    <button class="btnClick">Click</button>
+
+  
+    <div style="margin-top: 20px;">
+        <input type="text" id="inputText" placeholder="Nhập nội dung"/>
+        <button id="addBtn">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+    
+    <script>
+    //Câu 1 + 2
+    const h1 = document.querySelector(".titleH1");
+    h1.innerText = "Đây là nội dung";
+    h1.style.color = "blue";
+    h1.style.backgroundColor = "lightblue";
+
+    // Câu 3
+    const button = document.querySelector(".btnClick");
+    let isChanged = true;
+    button.addEventListener("click", () => {
+        if (isChanged) {
+            h1.innerText = "Đây là nội dung";
+            h1.style.color = "blue";
+            h1.style.backgroundColor = "lightblue";
+        } else {
+            h1.innerText = "This is content";
+            h1.style.color = "red";
+            h1.style.backgroundColor = "lightgray";
+        }
+        isChanged = !isChanged;
+    });
+
+    // Câu 4 + Câu 5
+    const input = document.getElementById("inputText");
+    const addBtn = document.getElementById("addBtn");
+    const taskList = document.getElementById("taskList");
+    let listTask = [];
+
+    window.onload = function () {
+        const storedTasks = localStorage.getItem("listTask");
+        if (storedTasks) {
+            listTask = JSON.parse(storedTasks);
+            renderTasks();
+        }
+    };
+
+    addBtn.addEventListener("click", () => {
+        const task = input.value.trim();
+        if (task !== "") {
+            listTask.push(task);
+            localStorage.setItem("listTask", JSON.stringify(listTask));
+            renderTasks();
+            input.value = "";
+        }
+    });
+
+    function renderTasks() {
+        taskList.innerHTML = "";
+        listTask.forEach(task => {
+            const li = document.createElement("li");
+            li.textContent = task;
+            taskList.appendChild(li);
+        });
+    }
+  </script>
+</body>
+</html>
