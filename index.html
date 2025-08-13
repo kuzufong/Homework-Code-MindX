@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <style>
+        * { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+        body{
+            margin: 0;
+            background: whitesmoke;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+        }
+        .interface {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            max-width: 1500px;
+            width: 70%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .start_button {
+            display: flex; justify-content: center; align-items: center;
+            width: 161px; height: 48px;
+            color: white; font-weight: bold; font-size: 16px; line-height: 150%;
+            background-color: #1fbd53; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer; user-select: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .start_button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);
+        }
+        .start_button.playing { 
+            background-color:red; 
+        }
+        .start_button.playing:hover { 
+            box-shadow:0 8px 24px rgba(225,29,72,.35); 
+        }
+        .hero {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 240px;
+            gap: 24px;
+        }
+        .game-content {
+            background-color: whitesmoke;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            padding: 24px;
+        }
+        .tiles-composition{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .tile {
+            aspect-ratio: 1 / 1;
+            height: auto;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.06);
+            user-select:none;
+        }
+        .t1{background: rgba(215,252,227,255); color: #0dbb4d} 
+        .t2{background: rgba(254,222,222,255); color: #ec1f1f} 
+        .t3{background: rgba(214,231,254,255); color: #2b74f5} 
+        .t4{background: rgba(241,229,255,255); color: #9b43f6}
+        .t5{background: rgba(254,248,187,255); color: #e8ae15} 
+        .t6{background: rgba(252,227,241,255); color: #e9388b} 
+        .t7{background: rgba(219,227,255,255); color: #5559ef} 
+        .t8{background: rgba(241,242,245,255); color: #5e6674}
+        .t9{background: rgba(203,249,225,255); color: #19b47c} 
+        .t10{background: rgba(254,241,192,255); color: #19b47c} 
+        .t11{background: rgba(233,252,196,255); color: #19b47c}
+        .tVoid{background: #000; color: #000;}
+        
+        .menu{ 
+            display: grid; 
+            gap: 16px;
+            height: 50%
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0,0,0,.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .timer {
+            background:#d7fce3;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.04);
+        }
+        .timer h4 {
+            margin: 0 0 6px;
+            font-size: 18px;
+            font-weight: 600;
+            color: black;
+        }
+        .timer .time { 
+            font-size: 32px; 
+            font-weight: 600; 
+        }
+        .guide h5 { 
+            margin: 0 0 12px; 
+            text-align:center; 
+            font-size: 16px; 
+        }
+        .pad {
+            display: grid; 
+            grid-template-columns: repeat(3, 36px);
+            gap: 8px; 
+            justify-content: center;
+        }
+        .key-button {
+            width: 36px; height: 36px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: #f3f4f6; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            font-size: 12px;
+        }
+        .history{
+            margin-top: 16px;
+            width: 100%;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow:hidden;
+        }
+        .history-header{
+            background:#f1f3f5;
+            padding: 12px 16px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 14px 
+        }
+
+        th, td { 
+            padding: 10px 12px; 
+            border-top: 1px solid #e5e7eb 
+        }
+        th { 
+            background: #f8fafc; 
+            text-align: left 
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="interface">
+        <div id="start_stop" class="start_button btn-hover-effect">Bắt Đầu</div>
+        <div class="hero">
+            <div class="game-content">
+                <div class="tiles-composition">
+                    <div class="tile t1">1</div>
+                    <div class="tile t2">2</div>
+                    <div class="tile t3">3</div>
+                    <div class="tile t4">4</div>
+
+                    <div class="tile t5">5</div>
+                    <div class="tile t6">6</div>
+                    <div class="tile t7">7</div>
+                    <div class="tile t8">8</div>
+
+                    <div class="tile t9">9</div>
+                    <div class="tile t10">10</div>
+                    <div class="tile t11">11</div>
+                    <div class="tile tVoid"></div>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <div class="timer card">
+                    <h4>Đồng Hồ</h4>
+                    <div class="time">00:00</div>
+                </div>
+
+                <div class="guide card">
+                    <h5>Hướng Dẫn Di Chuyển</h5>
+                    <div class="pad" aria-hidden="true">
+                        <span></span><div class="key-button">↑</div><span></span>
+                        <div class="key-button">←</div><div class="key-button">↓</div><div class="key-button">→</div>
+                    </div>
+                    <div class="pad" style="margin-top:10px">
+                        <span></span><div class="key-button">W</div><span></span>
+                        <div class="key-button">A</div><div class="key-button">S</div><div class="key-button">D</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="history">
+            <div class="history-header">Lịch Sử Lượt Chơi</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Bước đi</th>
+                        <th>Thời Gian</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const cols = 4;
+            const rows = 3;
+            const shuffleSteps = 100;
+
+            const btn = document.getElementById('start_stop');
+            const grid = document.querySelector('.tiles-composition');
+            const timeBox = document.querySelector('.timer .time');
+            const tableBody = document.querySelector('.history tbody');
+
+            const resultWin = Array.from({length: cols * rows - 1}, (_, i) => i + 1).concat(0);
+            let state = [...resultWin];
+            let playing = false;
+            let moves = 0;
+            let gamesPlayed = 0;
+            let sec = 0;
+            let intervalID = null;
+
+            const pad = n => (n < 10 ? '0' + n : '' + n);
+            const formatTime = s => {
+                const minutes = Math.floor(s / 60);
+                const seconds = s % 60;
+                return `${pad(minutes)}:${pad(seconds)}`;
+            };
+            
+            const oneDTo2D = i => ({ r: Math.floor(i / cols), c: i % cols });
+            const twoDTo1D = (r, c) => r * cols + c;
+
+            function render() {
+                grid.innerHTML = '';
+                state.forEach(value => {
+                    const div = document.createElement('div');
+                    div.className = `tile ${value === 0 ? 'tVoid' : 't' + value}`;
+                    if (value !== 0) div.textContent = value;
+                    grid.appendChild(div);
+                });
+            }
+            
+            function startTimer() {
+                sec = 0;
+                timeBox.textContent = '00:00';
+                clearInterval(intervalID);
+                intervalID = setInterval(() => {
+                    sec++;
+                    timeBox.textContent = formatTime(sec);
+                }, 1000);
+            }
+
+            function stopTimer() {
+                clearInterval(intervalID);
+                intervalID = null;
+            }
+
+            function checkInBounds(r, c) {
+                return r >= 0 && r < rows && c >= 0 && c < cols;
+            }
+
+            function moveBlank(dr, dc) {
+                if (!playing) return false;
+
+                const blankIdx = state.indexOf(0);
+                const {r, c} = oneDTo2D(blankIdx);
+                const newRow = r + dr;
+                const newCol = c + dc;
+                if (!checkInBounds(newRow, newCol)) return false;
+
+                const nIdx = twoDTo1D(newRow, newCol);
+                [state[blankIdx], state[nIdx]] = [state[nIdx], state[blankIdx]];
+                moves++;
+                render();
+                checkWin();
+                return true;
+            }
+            
+            function shuffle(times = shuffleSteps) {
+                state = [...resultWin];
+                render();
+
+                let blankIdx = state.indexOf(0);
+                for (let i = 0; i < times; i++) {
+                    const {r, c} = oneDTo2D(blankIdx);
+                    const candidates = [];
+                    if (r > 0) candidates.push([-1, 0]);
+                    if (r < rows - 1) candidates.push([1, 0]);
+                    if (c > 0) candidates.push([0, -1]);
+                    if (c < cols - 1) candidates.push([0, 1]);
+
+                    const [dr, dc] = candidates[Math.floor(Math.random() * candidates.length)];
+                    const newRow = r + dr;
+                    const newCol = c + dc;
+                    const nIdx = twoDTo1D(newRow, newCol);
+
+                    [state[blankIdx], state[nIdx]] = [state[nIdx], state[blankIdx]];
+                    blankIdx = nIdx;
+                }
+                if (isSolved()) shuffle(times);
+                render();
+            }
+
+            function isSolved() {
+                return state.every((v, i) => v === resultWin[i]);
+            }
+
+            function startGame() {
+                playing = true;
+                moves = 0;
+                btn.textContent = 'Kết Thúc';
+                btn.classList.add('playing');
+                shuffle();
+                startTimer();
+            }
+
+            function endGame(resetToIdle = true) {
+                playing = false;
+                stopTimer();
+                btn.textContent = 'Chơi Lại';
+                btn.classList.remove('playing');
+                if (resetToIdle) {
+                    state = [...resultWin];
+                    render();
+                    btn.textContent = 'Bắt Đầu';
+                    timeBox.textContent = '00:00';
+                }
+            }
+
+            function checkWin() {
+                if (!playing) return;
+                if (isSolved()) {
+                    playing = false;
+                    stopTimer();
+                    gamesPlayed++;
+                    alert('YOU WIN!');
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${gamesPlayed}</td>
+                        <td>${moves}</td>
+                        <td>${formatTime(sec)}</td>`;
+                    tableBody.appendChild(tr);
+
+                    btn.textContent = 'Chơi lại';
+                    btn.classList.remove('playing');
+                }
+            }
+
+            btn.addEventListener('click', () => {
+                const label = btn.textContent.trim();
+                if (label === 'Bắt Đầu' || label === 'Chơi lại') {
+                startGame();
+                } else {
+                endGame(true);
+                }
+            });
+
+            window.addEventListener('keydown', (e) => {
+                const k = e.key.toLowerCase();
+
+                if (k === 'arrowup'   || k === 'w') { e.preventDefault(); moveBlank(-1, 0); }
+                else if (k === 'arrowdown' || k === 's') { e.preventDefault(); moveBlank(1, 0); }
+                else if (k === 'arrowleft' || k === 'a') { e.preventDefault(); moveBlank(0, -1); }
+                else if (k === 'arrowright'|| k === 'd') { e.preventDefault(); moveBlank(0, 1); }
+            });
+
+            render(); 
+        })();   
+    </script>
+</body>
+</html>
