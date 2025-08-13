@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Exo", sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .header {
+            width: 100%;
+            height: 4.5rem;
+            gap: 0.625rem;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid rgba(234, 234, 234, 1);
+            font-family: "Exo", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .Frame_27 {
+            max-width: 1290px;
+            width: 100%;
+            height: fill;
+            justify-content: space-between;
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+
+        }
+        .logo {
+            width: 10.394rem;
+            height: 1.875rem;
+            gap: 4px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+        }
+        .logo img {
+            width: 2.456rem;
+            height: auto;
+        }
+        .logo p {
+            width: auto;
+            font-family: Exo;
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 1.75rem;
+            line-height: 120%;
+
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2.813rem;
+            color: black;
+            font-weight: 600;
+            line-height: 120%;
+            font-size: 1rem;
+            margin: 0 1.625rem 0 1.625rem;
+        }
+        .Frame_74 {
+            max-width: 12.375rem;
+            width: 100%;
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+        }
+        .login-register {
+            font-size: 1.125rem;
+            color: black;
+            text-align: center;
+            
+        }
+        .search-icon {
+            width: 3rem;
+            height: 3rem;
+            border: 0.125rem solid rgba(255, 120, 45, 1);
+            border-radius: 50%;
+            color: rgba(255, 120, 45, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+        }
+        .body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .body-hero-banner {
+            width: 100%;
+            height: 43.75rem;
+            background-image: url("background.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .body-hero-banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 1290px;
+            width: 100%;
+            height: 16.375rem;
+            gap: 1.5rem;
+        }
+        .body-hero-banner-content h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 3rem;
+            line-height: 120%;
+        }
+        .body-hero-banner-content p {
+            font-family: "Jost", sans-serif;
+            font-weight: 400;
+            font-size: 1.125rem;
+            line-height: 150%;
+            color: rgba(85, 85, 85, 1);
+        }
+        .post-comment-button {
+            font-family: "Jost", sans-serif;
+            width: 10.625rem;
+            height: 3rem;
+            border-radius: 24px;
+            padding: 0.625rem 0 0.625rem 0;
+            background: rgba(255, 120, 45, 1);
+            color: white;
+            font-weight: 500;
+            font-size: 1.125rem;
+            line-height: 150%;
+            border: none;
+            cursor: pointer;
+        }
+        .categories {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1290px;
+            height: 40.063rem;
+            gap: 3.125rem;
+            margin-top: 5rem;
+        }
+        .categories-topHeading {
+            max-width: 1290px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        .categories-topHeading-title {
+            font-family: "Exo", sans-serif;
+            width: 49.188rem;
+            height: 4.813rem;
+        }
+        .categories-topHeading-title h2 {
+            font-family: "Exo", sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 120%;
+            margin: 0 0 0.75rem 0;
+            width: 100%;
+        }
+        .categories-topHeading-title p {
+            font-family: "Jost", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            color: rgba(85, 85, 85, 1);
+            width: 100%;
+        }
+        .categories-topHeading-button {
+            border: 2px solid rgba(157, 157, 157, 1);
+            width: 161px;
+            height: 48px;
+            gap: 10px;
+            border-radius: 24px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            justify-content: center;
+            background: none;
+
+            font-family: "Jost", sans-serif;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 18px;
+            line-height: 150%;
+            letter-spacing: 0%;
+
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.875rem 1.875rem;
+            width: 100%;
+            max-width: 1290px;
+            margin: 0;
+        }
+        .categories-card {
+            background: #fff;
+            border: 1px solid rgba(234, 234, 234, 1);
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 234px;
+            height: 234px;
+            justify-content: center;      
+        }
+        .categories-card img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 24px;
+        }
+        .categories-card h4 {
+            font-family: "Exo", sans-serif;
+
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 120%;
+            letter-spacing: 0%;
+        }
+        .categories-card p {
+            font-family: "Jost", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            color: rgba(85, 85, 85, 1);
+        }
+        .featured-courses {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 1290px;
+            height: 40.063rem;
+            gap: 3.125rem;
+            margin-top: 5rem;
+        }
+        .featured-courses-topHeading {
+            max-width: 1290px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        .featured-courses-topHeading-title {
+            font-family: "Exo", sans-serif;
+            width: 49.188rem;
+            height: 4.813rem;
+        }
+        .featured-courses-topHeading-title h2 {
+            font-family: "Exo", sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 120%;
+            margin: 0 0 0.75rem 0;
+            width: 100%;
+        }
+        .featured-courses-topHeading-title p {
+            font-family: "Jost", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            color: rgba(85, 85, 85, 1);
+            width: 100%;
+        }
+        .featured-courses-topHeading-button {
+            border: 2px solid rgba(157, 157, 157, 1);
+            width: 161px;
+            height: 48px;
+            gap: 10px;
+            border-radius: 24px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            justify-content: center;
+            background: none;
+
+            font-family: "Jost", sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 150%;
+            letter-spacing: 0%;
+
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+        .featured-courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px 30px;
+            width: 100%;
+            max-width: 1290px;
+            margin: 0;
+        }
+        .featured-courses-card {
+            background: #fff;
+            border: 1px solid rgba(234, 234, 234, 1);
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 410px;
+            height: 474px;   
+        }
+        .featured-courses-card-image {
+            width: 410px;
+            height: 250px;
+            position: relative;
+        }
+        .featured-courses-card-image img {
+            width: 410px;
+            height: 250px;
+            position: relative;
+        }
+        .featured-courses-card-image p {
+            width: 114px;
+            height: 40px;
+            border-radius: 8px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            background: rgba(0, 0, 0, 1);
+            position: relative;
+            bottom: 230px;
+            left: 20px;
+
+            color: white;
+            text-align: center;
+            font-family: "Jost", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+        }
+        .featured-courses-card-content {
+            width: 410px;
+            height: 224px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        .featured-courses-card-content p {
+            width: 370px;
+            font-family: "Jost", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            vertical-align: middle;
+
+        }
+        .featured-courses-card-content h4 {
+            width: 370px;
+            font-family: "Exo";
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 120%;
+            margin: 0;
+        }
+        .featured-courses-card-content-meta {
+            display: flex;
+            width: 370px;
+            height: 24px;
+            font-family: "Jost",sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            vertical-align: middle;
+            color: rgba(85, 85, 85, 1);
+
+        }
+        .featured-courses-card-content-meta p {
+            margin-right: 24px;
+        }
+
+        .featured-courses-card-content-footer {
+            width: 370px;
+            display: flex;
+            justify-content: space-between;
+            font-family: "Jost";
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 150%;
+        }
+        .banner-addons {
+            max-width: 1290px;
+            width:100%;
+            height: 324px;
+            background-image: url("Mask\ group.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner-addons-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 1290px;
+            width: 100%;
+            height: 215px;
+            gap: 24px;
+        }
+        .banner-addons-content h5 {
+            font-family: "Exo", sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 120%;
+            color: rgba(85, 85, 85, 1);
+
+        }
+        .banner-addons-content h2 {
+            margin: 0;
+            font-family: "Exo", sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 120%;
+
+        }
+        .banner-addons-content p {
+            font-family: "Jost", sans-serif;
+            font-weight: 400;
+            font-size: 1.125rem;
+            line-height: 150%;
+            color: rgba(85, 85, 85, 1);
+        }
+        .explorer-course-button {
+            font-family: "Jost", sans-serif;
+            width: 10.625rem;
+            height: 3rem;
+            border-radius: 24px;
+            padding: 0.625rem 0 0.625rem 0;
+            background: rgba(255, 120, 45, 1);
+            color: white;
+            font-weight: 500;
+            font-size: 1.125rem;
+            line-height: 150%;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="Frame_27">
+            <div class="logo">
+                <img src="Isolation_Mode.png" alt="EduPress Logo">
+                <p>EduPress</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">Courses</a>
+                <a href="#">Blog</a>
+                <a href="#">Page &#9660;</a>
+                <a href="#">LearnPress Add-On</a>
+                <a href="#">Premium Theme</a>
+            </nav>
+            <div class="Frame_74">
+                <div class="login-register">
+                    <a href="#">Login</a> / <a href="#">Register</a> 
+                </div>
+                <div class="search-icon">
+                    <i class="fa fa-search"></i>
+                </div>
+                
+        </div>
+    </header>
+    <body class="body">
+        <div class="body-hero-banner">
+            <div class="body-hero-banner-content">
+                <h1>Build Skills With <br> Online Course</h1>
+                <p>We denounce with righteous indignation and dislike men who <br> are so beguiled and demoralized that cannot trouble.</p>
+                <button class="post-comment-button">Posts Comment</button>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="categories-topHeading">
+                <div class="categories-topHeading-title">
+                    <h2>Categories</h2>
+                    <p>Explore our Popular Categories</p>
+                </div>
+                <button class="categories-topHeading-button">All Categories</button>
+            </div>
+            <div class="categories-grid">
+                <div class="categories-card">
+                    <img src="Icon0.png" alt="">
+                    <h4>Art & Design</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Component 2.png" alt="">
+                    <h4>Development</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon.png" alt="">
+                    <h4>Communication</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-1.png" alt="">
+                    <h4>Videography</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-2.png" alt="">
+                    <h4>Photography</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-3.png" alt="">
+                    <h4>Marketing</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-4.png" alt="">
+                    <h4>Content Writing</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-5.png" alt="">
+                    <h4>Finance</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-6.png" alt="">
+                    <h4>Science</h4>
+                    <p>38 courses</p>
+                </div>
+                <div class="categories-card">
+                    <img src="Icon-7.png" alt="">
+                    <h4>Network</h4>
+                    <p>38 courses</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="featured-courses">
+            <div class="featured-courses-topHeading">
+                <div class="featured-courses-topHeading-title">
+                    <h2>Featured Courses</h2>
+                    <p>Explore our Popular Courses</p>
+                </div>
+                <button class="featured-courses-topHeading-button">All Courses</button>
+            </div>
+            <div class="featured-courses-grid">
+                <div class="featured-courses-card">
+                    <div class="featured-courses-card-image">
+                        <img src="Rectangle 139.png" alt="">
+                        <p>Photography</p>
+                    </div>
+                    <div class="featured-courses-card-content">
+                        <p>by <span>Determine-Poitras</span></p>
+                        <h4> Create An LMS Website With <br> LearnPress</h4>
+                        <div class="featured-courses-card-content-meta">
+                            <img src="Time (1).png" alt="">
+                            <p style="width: 54px;">2Weeks</p>
+                            <img src="School.png" alt="">
+                            <p>156 Students</p>
+                        </div>
+                        <hr style="width: 370px; height: 1px; color: rgba(234, 234, 234, 1); margin: 0 ";>
+                        <div class="featured-courses-card-content-footer">
+                            <p style="color: rgba(85, 190, 36, 1);"><span style="text-decoration: line-through; color: rgba(157, 157, 157, 1);">$29.0</span>Free</p>
+                            <a>View More</a>
+                        </div>
+                    </div>    
+                </div>  
+                <div class="featured-courses-card">
+                    <div class="featured-courses-card-image">
+                        <img src="Rectangle 139-5.png" alt="">
+                        <p>Photography</p>
+                    </div>    
+                    <div class="featured-courses-card-content">
+                        <p>by <span>Determine-Poitras</span></p>
+                        <h4>Design A Website With Thimpress</h4>
+                        <div class="featured-courses-card-content-meta">
+                            <img src="Time (1).png" alt="">
+                            <p style="width: 54px;">2Weeks</p>
+                            <img src="School.png" alt="">
+                            <p>156 Students</p>
+                        </div>
+                        <hr style="width: 370px; height: 1px; color: rgba(234, 234, 234, 1); margin: 0 ";>
+                        <div class="featured-courses-card-content-footer">
+                            <p><span style="text-decoration: line-through; color: rgba(157, 157, 157, 1);">$59.0</span>$49.0</p>
+                            <a>View More</a>
+                        </div>
+                    </div>    
+                </div>  
+                <div class="featured-courses-card">
+                    <div class="featured-courses-card-image">
+                        <img src="Rectangle 139-1.png" alt="">
+                        <p>Photography</p>
+                    </div>    
+                    <div class="featured-courses-card-content">
+                        <p>by <span>Determine-Poitras</span></p>
+                        <h4> Create An LMS Website With <br> LearnPress</h4>
+                        <div class="featured-courses-card-content-meta">
+                            <img src="Time (1).png" alt="">
+                            <p style="width: 54px;">2Weeks</p>
+                            <img src="School.png" alt="">
+                            <p>156 Students</p>
+                        </div>
+                        <hr style="width: 370px; height: 1px; color: rgba(234, 234, 234, 1); margin: 0 ";>
+                        <div class="featured-courses-card-content-footer">
+                            <p style="color: rgba(85, 190, 36, 1);"><span style="text-decoration: line-through; color: rgba(157, 157, 157, 1);">$29.0</span>Free</p>
+                            <a>View More</a>
+                        </div>
+                    </div>    
+                </div>  
+                <div class="featured-courses-card">
+                    <div class="featured-courses-card-image">
+                        <img src="Rectangle 139-2.png" alt="">
+                        <p>Photography</p>
+                    </div>    
+                    <div class="featured-courses-card-content">
+                        <p>by <span>Determine-Poitras</span></p>
+                        <h4> Create An LMS Website With <br> LearnPress</h4>
+                        <div class="featured-courses-card-content-meta">
+                            <img src="Time (1).png" alt="">
+                            <p style="width: 54px;">2Weeks</p>
+                            <img src="School.png" alt="">
+                            <p>156 Students</p>
+                        </div>
+                        <hr style="width: 370px; height: 1px; color: rgba(234, 234, 234, 1); margin: 0 ";>
+                        <div class="featured-courses-card-content-footer">
+                            <p style="color: rgba(85, 190, 36, 1);"><span style="text-decoration: line-through; color: rgba(157, 157, 157, 1);">$29.0</span>Free</p>
+                            <a>View More</a>
+                        </div>
+                    </div>    
+                </div>  
+                <div class="featured-courses-card">
+                    <div class="featured-courses-card-image">
+                        <img src="Rectangle 139-3.png" alt="">
+                        <p>Photography</p>
+                    </div>    
+                    <div class="featured-courses-card-content">
+                        <p>by <span>Determine-Poitras</span></p>
+                        <h4> Create An LMS Website With <br> LearnPress</h4>
+                        <div class="featured-courses-card-content-meta">
+                            <img src="Time (1).png" alt="">
+                            <p style="width: 54px;">2Weeks</p>
+                            <img src="School.png" alt="">
+                            <p>156 Students</p>
+                        </div>
+                        <hr style="width: 370px; height: 1px; color: rgba(234, 234, 234, 1); margin: 0 ";>
+                        <div class="featured-courses-card-content-footer">
+                            <p style="color: rgba(85, 190, 36, 1);"><span style="text-decoration: line-through; color: rgba(157, 157, 157, 1);">$29.0</span>Free</p>
+                            <a>View More</a>
+                        </div>
+                    </div>    
+                </div>  
+                <div class="featured-courses-card">
+                    <div class="featured-courses-card-image">
+                        <img src="Rectangle 139-4.png" alt="">
+                        <p>Photography</p>
+                    </div>    
+                    <div class="featured-courses-card-content">
+                        <p>by <span>Determine-Poitras</span></p>
+                        <h4> Create An LMS Website With <br> LearnPress</h4>
+                        <div class="featured-courses-card-content-meta">
+                            <img src="Time (1).png" alt="">
+                            <p style="width: 54px;">2Weeks</p>
+                            <img src="School.png" alt="">
+                            <p>156 Students</p>
+                        </div>
+                        <hr style="width: 370px; height: 1px; color: rgba(234, 234, 234, 1); margin: 0 ";>
+                        <div class="featured-courses-card-content-footer">
+                            <p style="color: rgba(85, 190, 36, 1);"><span style="text-decoration: line-through; color: rgba(157, 157, 157, 1);">$29.0</span>Free</p>
+                            <a>View More</a>
+                        </div>
+                    </div>    
+                </div>  
+            </div>
+        </div>
+        <div class="banner-addons">
+            <div class="banner-addons-content">
+
+            </div>
+        </div>
+    </body>
+</body>
+</html>
